@@ -1,0 +1,21 @@
+{
+    "name": "GitHub Organization Permission Checker",
+    "keywords": [
+        "GitHub"
+    ],
+    "env": {
+        "GITHUB_ORGANIZATION": {
+            "description": "Your GitHub organization name"
+        },
+        "GITHUB_ACCESS_TOKEN": {
+            "description": "Your GitHub access token. To get new token with `repo` scope, visit https://github.com/settings/tokens/new"
+        },
+        "SLACK_WEBHOOK_URL": {
+            "value": "Slack Incoming Webhook URL"
+        },
+        "SLACK_CHANNEL": {
+            "description": "ex. #hoge"
+        }
+    },
+    "addons": ["scheduler:standard"]
+}
