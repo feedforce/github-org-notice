@@ -10,11 +10,14 @@
         "GITHUB_ACCESS_TOKEN": {
             "description": "Your GitHub access token. To get new token with `repo` scope, visit https://github.com/settings/tokens/new"
         },
-        "SLACK_WEBHOOK_URL": {
-            "value": "Slack Incoming Webhook URL"
-        },
         "SLACK_CHANNEL": {
             "description": "ex. #hoge"
+        },
+        "SLACK_TITLE": {
+            "description": "Slack message title"
+        },
+        "SLACK_WEBHOOK_URL": {
+            "value": "Slack Incoming Webhook URL"
         },
         "TEAMS_PERMISSION": {
             "description": "ex. PowerUsers=admin,Users=push"
