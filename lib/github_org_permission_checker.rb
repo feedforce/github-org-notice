@@ -23,7 +23,12 @@ class GithubOrgPermissionChecker
     result_repos = []
 
     repos.each do |repo|
-      teams = client.repository_teams(repo[:full_name])
+      begin
+        teams = client.repository_teams(repo[:full_name])
+      rescue Octokit::NotFound
+        # なぜか #repos が削除したリポジトリを返したため
+        next
+      end
 
       if valid_permission?(repo, teams)
         puts "Checking #{repo[:full_name]} OK."
