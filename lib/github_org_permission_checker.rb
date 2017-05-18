@@ -5,10 +5,12 @@ require 'octokit'
 class GithubOrgPermissionChecker
   # @param org_name [String] GitHub Organization
   # @param access_token [String] GitHub Access Token
+  # @param teams_permission [String] Teams permission
   # @param notifier_name [#post] the notifier object to post
-  def initialize(org_name:, access_token:, notifier:)
+  def initialize(org_name:, access_token:, teams_permission:, notifier:)
     @org_name = org_name
     @access_token = access_token
+    @raw_teams_permission = teams_permission
     @notifier = notifier
   end
 
@@ -41,7 +43,7 @@ class GithubOrgPermissionChecker
 
   private
 
-  attr_reader :org_name, :access_token, :notifier
+  attr_reader :org_name, :access_token, :raw_teams_permission, :notifier
 
   def repos
     repos = client.organization_repositories(org_name)
@@ -56,15 +58,29 @@ class GithubOrgPermissionChecker
   end
 
   def valid_permission?(repo, teams)
-    if ! have_permission?(teams, name: 'PowerUsers', permission: 'admin')
-      return false
-    end
-
-    if ! have_permission?(teams, name: 'Users', permission: 'push')
-      return false
+    teams_permission.each do |name, permission|
+      unless have_permission?(teams, name: name, permission: permission)
+        return false
+      end
     end
 
     collaborators(repo).empty?
+  end
+
+  # PowerUsers=admin,Users=push
+  # ↓
+  # {"PowerUsers"=>"admin", "Users"=>"push"}
+  #
+  # @return [Hash]
+  def teams_permission
+    @teams_permission ||=
+      begin
+        ary = (raw_teams_permission || "")
+                .split(',')
+                .map{|e| e.split('=')}
+                .flatten
+        Hash[*ary]
+      end
   end
 
   def have_permission?(teams, name:, permission:)

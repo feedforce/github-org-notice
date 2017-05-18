@@ -9,7 +9,8 @@ notifier = GithubOrgPermissionNotifier.new(
 )
 
 GithubOrgPermissionChecker.new(
-  org_name:     ENV['GITHUB_ORGANIZATION'],
-  access_token: ENV['GITHUB_ACCESS_TOKEN'],
-  notifier:     notifier
+  org_name:         ENV['GITHUB_ORGANIZATION'],
+  access_token:     ENV['GITHUB_ACCESS_TOKEN'],
+  teams_permission: ENV['TEAMS_PERMISSION'],
+  notifier:         notifier
 ).execute

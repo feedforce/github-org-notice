@@ -15,6 +15,9 @@
         },
         "SLACK_CHANNEL": {
             "description": "ex. #hoge"
+        },
+        "TEAMS_PERMISSION": {
+            "description": "ex. PowerUsers=admin,Users=push"
         }
     },
     "addons": ["scheduler:standard"]
