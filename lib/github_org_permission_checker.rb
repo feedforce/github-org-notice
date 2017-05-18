@@ -18,7 +18,7 @@ class GithubOrgPermissionChecker
   #
   # @see https://goo.gl/7DjYTu
   def execute
-    puts 'Started GithubOrgPermissionChecker#execute'
+    puts "Started #{self.class.name}##{__method__}"
 
     result_repos = []
 
@@ -43,7 +43,7 @@ class GithubOrgPermissionChecker
     notifier.post(result_repos) unless result_repos.empty?
 
     puts "`result_repos` number is #{result_repos.count}."
-    puts 'Completed GithubOrgPermissionChecker#execute'
+    puts "Completed #{self.class.name}##{__method__}"
   end
 
   private
