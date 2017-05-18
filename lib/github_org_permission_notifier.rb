@@ -25,7 +25,7 @@ class GithubOrgPermissionNotifier
         {
           color: 'warning',
           fields: fields(repos),
-          footer: 'Powered by https://dashboard.heroku.com/apps/github-org-permission-checker',
+          footer: 'Powered by https://github.com/feedforce/github-org-permission-checker',
         },
       ]
     )
