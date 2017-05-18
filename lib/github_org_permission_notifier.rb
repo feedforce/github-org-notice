@@ -5,9 +5,10 @@ require 'slack-notifier'
 class GithubOrgPermissionNotifier
   # @param webhook_url [String] Slack Incoming Webhook URL
   # @param channel [String] Slack Channel
-  def initialize(webhook_url:, channel:, title:)
+  def initialize(webhook_url:, channel:, icon_emoji:, title:)
     @webhook_url = webhook_url
     @channel = channel
+    @icon_emoji = icon_emoji
     @title = title
   end
 
@@ -18,7 +19,7 @@ class GithubOrgPermissionNotifier
     client.post(
       username: 'GithubOrgPermissionChecker',
       channel: channel,
-      icon_emoji: ':github:',
+      icon_emoji: icon_emoji,
       text: title,
       attachments: [
         {
@@ -32,7 +33,7 @@ class GithubOrgPermissionNotifier
 
   private
 
-  attr_reader :webhook_url, :channel, :title
+  attr_reader :webhook_url, :channel, :icon_emoji, :title
 
   def client
     @client ||= Slack::Notifier.new(webhook_url)

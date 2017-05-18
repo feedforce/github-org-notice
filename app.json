@@ -13,6 +13,9 @@
         "SLACK_CHANNEL": {
             "description": "ex. #hoge"
         },
+        "SLACK_ICON_EMOJI": {
+            "description": "Slack icon ex. :github:"
+        },
         "SLACK_TITLE": {
             "description": "Slack message title"
         },
