@@ -41,7 +41,7 @@ class GithubOrgPermissionNotifier
   def fields(repos)
     repos.map do |repo|
       {
-        title: repo[:full_name],
+        title: repo[:name],
         value: "<https://github.com/#{repo[:full_name]}/settings/collaboration|Settings>",
         short: true,
       }
