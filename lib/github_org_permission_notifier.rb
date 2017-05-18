@@ -5,9 +5,10 @@ require 'slack-notifier'
 class GithubOrgPermissionNotifier
   # @param webhook_url [String] Slack Incoming Webhook URL
   # @param channel [String] Slack Channel
-  def initialize(webhook_url:, channel:)
+  def initialize(webhook_url:, channel:, title:)
     @webhook_url = webhook_url
     @channel = channel
+    @title = title
   end
 
   # 通知する
@@ -18,7 +19,7 @@ class GithubOrgPermissionNotifier
       username: 'GithubOrgPermissionChecker',
       channel: channel,
       icon_emoji: ':github:',
-      text: '@github-owners https://goo.gl/7DjYTu を参考にして、権限の設定をお願いします。',
+      text: title,
       attachments: [
         {
           color: 'warning',
@@ -31,7 +32,7 @@ class GithubOrgPermissionNotifier
 
   private
 
-  attr_reader :webhook_url, :channel
+  attr_reader :webhook_url, :channel, :title
 
   def client
     @client ||= Slack::Notifier.new(webhook_url)
