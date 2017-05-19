@@ -14,5 +14,6 @@ GithubOrgPermissionChecker.new(
   org_name:         ENV['GITHUB_ORGANIZATION'],
   access_token:     ENV['GITHUB_ACCESS_TOKEN'],
   teams_permission: ENV['TEAMS_PERMISSION'],
+  skip_days:        ENV['SKIP_DAYS'],
   notifier:         notifier
 ).execute

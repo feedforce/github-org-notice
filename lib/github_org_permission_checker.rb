@@ -7,15 +7,21 @@ class GithubOrgPermissionChecker
   # @param access_token [String] GitHub Access Token
   # @param teams_permission [String] Teams permission
   # @param notifier_name [#post] the notifier object to post
-  def initialize(org_name:, access_token:, teams_permission:, notifier:)
+  def initialize(org_name:, access_token:, teams_permission:, skip_days:, notifier:)
     @org_name = org_name
     @access_token = access_token
     @raw_teams_permission = teams_permission
+    @skip_days = skip_days
     @notifier = notifier
   end
 
   # 権限の設定が必要なリポジトリを通知する
   def execute
+    if skip?
+      puts "This is skipped for skip_days (#{skip_days})."
+      return
+    end
+
     puts "Started #{self.class.name}##{__method__}"
 
     result_repos = []
@@ -45,7 +51,12 @@ class GithubOrgPermissionChecker
 
   private
 
-  attr_reader :org_name, :access_token, :raw_teams_permission, :notifier
+  attr_reader :org_name, :access_token, :raw_teams_permission, :skip_days, :notifier
+
+  def skip?
+    skip_days &&
+      skip_days.split(',').include?(Time.now.strftime('%a'))
+  end
 
   def repos
     repos = client.organization_repositories(org_name)

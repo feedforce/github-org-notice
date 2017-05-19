@@ -10,6 +10,10 @@
         "GITHUB_ACCESS_TOKEN": {
             "description": "Your GitHub access token. To get new token with `repo` scope, visit https://github.com/settings/tokens/new"
         },
+        "SKIP_DAYS": {
+	    "value": "Sat,Sun",
+            "description": "Daynames to be skipped"
+        },
         "SLACK_CHANNEL": {
             "description": "ex. #hoge"
         },
