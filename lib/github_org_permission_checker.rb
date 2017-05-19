@@ -15,8 +15,6 @@ class GithubOrgPermissionChecker
   end
 
   # 権限の設定が必要なリポジトリを通知する
-  #
-  # @see https://goo.gl/7DjYTu
   def execute
     puts "Started #{self.class.name}##{__method__}"
 
