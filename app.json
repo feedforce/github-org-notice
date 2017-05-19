@@ -24,7 +24,7 @@
             "description": "Slack message title"
         },
         "SLACK_WEBHOOK_URL": {
-            "value": "Slack Incoming Webhook URL"
+            "description": "Slack Incoming Webhook URL"
         },
         "TEAMS_PERMISSION": {
             "description": "ex. PowerUsers=admin,Users=push"
