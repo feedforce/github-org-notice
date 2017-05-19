@@ -31,12 +31,10 @@ class GithubOrgPermissionChecker
 
       if valid_permission?(repo, teams)
         puts "Checking #{repo[:full_name]} OK."
-        next
       else
         puts "Checking #{repo[:full_name]} NG."
+        result_repos << repo
       end
-
-      result_repos << repo
     end
 
     notifier.post(result_repos) unless result_repos.empty?
