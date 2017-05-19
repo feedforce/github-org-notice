@@ -25,6 +25,7 @@ class GithubOrgPermissionChecker
         teams = client.repository_teams(repo[:full_name])
       rescue Octokit::NotFound
         # なぜか #repos が削除したリポジトリを返したため
+        puts "Not Found #{repo[:full_name]}"
         next
       end
 
