@@ -30,5 +30,9 @@
             "description": "ex. PowerUsers=admin,Users=push"
         }
     },
-    "addons": ["scheduler:standard"]
+    "addons": [
+	{
+	    "plan": "scheduler:standard"
+	}
+    ]
 }
