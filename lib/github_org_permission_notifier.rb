@@ -5,6 +5,8 @@ require 'slack-notifier'
 class GithubOrgPermissionNotifier
   # @param webhook_url [String] Slack Incoming Webhook URL
   # @param channel [String] Slack Channel
+  # @param icon_emoji [String] Slack Icon Emoji
+  # @param title [String] Slack Title
   def initialize(webhook_url:, channel:, icon_emoji:, title:)
     @webhook_url = webhook_url
     @channel = channel

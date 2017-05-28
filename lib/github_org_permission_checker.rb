@@ -6,7 +6,8 @@ class GithubOrgPermissionChecker
   # @param org_name [String] GitHub Organization
   # @param access_token [String] GitHub Access Token
   # @param teams_permission [String] Teams permission
-  # @param notifier_name [#post] the notifier object to post
+  # @param skip_days [String] Skip days for checking
+  # @param notifier [#post] the notifier object to post
   def initialize(org_name:, access_token:, teams_permission:, skip_days:, notifier:)
     @org_name = org_name
     @access_token = access_token
