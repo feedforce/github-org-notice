@@ -1,4 +1,4 @@
-# github-org-permission-checker
+# github-org-notice
 
 ![Slack message](images/slack-message.png)
 

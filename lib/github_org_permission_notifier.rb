@@ -17,7 +17,7 @@ class GithubOrgPermissionNotifier
   # @param repos [Array<Sawyer::Resource>]
   def post(repos)
     client.post(
-      username: 'GithubOrgPermissionChecker',
+      username: 'GithubOrgNotice',
       channel: channel,
       icon_emoji: icon_emoji,
       text: title,
@@ -25,7 +25,7 @@ class GithubOrgPermissionNotifier
         {
           color: 'warning',
           fields: fields(repos),
-          footer: 'Powered by https://github.com/feedforce/github-org-permission-checker',
+          footer: 'Powered by https://github.com/feedforce/github-org-notice',
         },
       ]
     )
