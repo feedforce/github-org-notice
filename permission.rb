@@ -5,9 +5,9 @@ require_relative 'lib/github_org_permission_notifier'
 
 notifier = GithubOrgPermissionNotifier.new(
   webhook_url: ENV['SLACK_WEBHOOK_URL'],
-  channel:     ENV['SLACK_CHANNEL'],
+  channel:     ENV['SLACK_CHANNEL_FOR_PERMISSION'],
   icon_emoji:  ENV['SLACK_ICON_EMOJI'],
-  title:       ENV['SLACK_TITLE']
+  title:       ENV['SLACK_TITLE_FOR_PERMISSION']
 )
 
 GithubOrgPermissionChecker.new(

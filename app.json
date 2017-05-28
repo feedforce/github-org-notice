@@ -14,20 +14,29 @@
 	    "value": "Sat,Sun",
             "description": "Daynames to be skipped"
         },
-        "SLACK_CHANNEL": {
-            "description": "ex. #hoge"
+        "SLACK_CHANNEL_FOR_PERMISSION": {
+            "description": "Slack channel for permission checker (ex. #hoge)"
+        },
+        "SLACK_CHANNEL_FOR_TFA": {
+            "description": "Slack channel for TFA checker (ex. #huga)"
         },
         "SLACK_ICON_EMOJI": {
             "description": "Slack icon ex. :github:"
         },
-        "SLACK_TITLE": {
-            "description": "Slack message title"
+        "SLACK_TITLE_FOR_PERMISSION": {
+            "description": "Slack message title for permission checker"
+        },
+        "SLACK_TITLE_FOR_TFA": {
+            "description": "Slack message title for TFA checker"
         },
         "SLACK_WEBHOOK_URL": {
             "description": "Slack Incoming Webhook URL"
         },
         "TEAMS_PERMISSION": {
-            "description": "ex. PowerUsers=admin,Users=push"
+            "description": "Teams permission for permission checker (ex. PowerUsers=admin,Users=push)"
+        },
+        "IGNORE_USERS": {
+            "description": "Ignore users for TFA checker (ex. user1,user2)"
         }
     },
     "addons": [
