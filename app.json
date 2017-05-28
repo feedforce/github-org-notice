@@ -14,14 +14,14 @@
 	    "value": "Sat,Sun",
             "description": "Daynames to be skipped"
         },
-        "SLACK_CHANNEL": {
-            "description": "ex. #hoge"
+        "SLACK_CHANNEL_FOR_PERMISSION": {
+            "description": "Slack channel for permission checker (ex. #hoge)"
         },
         "SLACK_ICON_EMOJI": {
             "description": "Slack icon ex. :github:"
         },
-        "SLACK_TITLE": {
-            "description": "Slack message title"
+        "SLACK_TITLE_FOR_PERMISSION": {
+            "description": "Slack message title for permission checker"
         },
         "SLACK_WEBHOOK_URL": {
             "description": "Slack Incoming Webhook URL"
