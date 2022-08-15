@@ -85,9 +85,9 @@ class GithubOrgPermissionChecker
     # collaborators(repo).empty?
   end
 
-  # PowerUsers=admin,Users=push
+  # PowerUsers=admin,Users=write
   # ↓
-  # {"PowerUsers"=>"admin", "Users"=>"push"}
+  # {"PowerUsers"=>"admin", "Users"=>"write"}
   #
   # @return [Hash]
   def teams_permission
