@@ -78,11 +78,7 @@ class GithubOrgPermissionChecker
       end
     end
 
-    # リポジトリごと設定された Outside collaborators は、
-    # https://github.com/orgs/feedforce/outside-collaborators
-    # で一括して把握できるので、一旦許容する。
-    true
-    # collaborators(repo).empty?
+    collaborators(repo).empty?
   end
 
   # PowerUsers=admin,Users=write
