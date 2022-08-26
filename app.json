@@ -33,7 +33,7 @@
             "description": "Slack Incoming Webhook URL"
         },
         "TEAMS_PERMISSION": {
-            "description": "Teams permission for permission checker (ex. PowerUsers=admin,Users=write)"
+            "description": "Teams permission for permission checker (ex. PowerUsers=admin,Users=push)"
         },
         "IGNORE_USERS": {
             "description": "Ignore users for TFA checker (ex. user1,user2)"
