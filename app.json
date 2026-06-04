@@ -37,6 +37,10 @@
         },
         "IGNORE_USERS": {
             "description": "Ignore users for TFA checker (ex. user1,user2)"
+        },
+        "IGNORE_COLLABORATORS": {
+            "description": "Ignore outside collaborators for permission checker (ex. user1,user2)",
+            "required": false
         }
     },
     "addons": [

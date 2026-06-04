@@ -6,12 +6,14 @@ class GithubOrgPermissionChecker
   # @param org_name [String] GitHub Organization
   # @param access_token [String] GitHub Access Token
   # @param teams_permission [String] Teams permission
+  # @param ignore_collaborators [String] Ignore outside collaborators for checking
   # @param skip_days [String] Skip days for checking
   # @param notifier [#post] the notifier object to post
-  def initialize(org_name:, access_token:, teams_permission:, skip_days:, notifier:)
+  def initialize(org_name:, access_token:, teams_permission:, ignore_collaborators:, skip_days:, notifier:)
     @org_name = org_name
     @access_token = access_token
     @raw_teams_permission = teams_permission
+    @raw_ignore_collaborators = ignore_collaborators
     @skip_days = skip_days
     @notifier = notifier
   end
@@ -52,7 +54,7 @@ class GithubOrgPermissionChecker
 
   private
 
-  attr_reader :org_name, :access_token, :raw_teams_permission, :skip_days, :notifier
+  attr_reader :org_name, :access_token, :raw_teams_permission, :raw_ignore_collaborators, :skip_days, :notifier
 
   def skip?
     skip_days &&
@@ -78,7 +80,7 @@ class GithubOrgPermissionChecker
       end
     end
 
-    collaborators(repo).empty?
+    collaborators(repo).reject {|collaborator| ignore_collaborator?(collaborator)}.empty?
   end
 
   # PowerUsers=admin,Users=push
@@ -103,6 +105,23 @@ class GithubOrgPermissionChecker
 
   def collaborators(repo)
     client.collaborators(repo[:full_name], affiliation: 'outside')
+  end
+
+  # 無視するコラボレーターかを返す
+  #
+  # @param collaborator [Sawyer::Resource]
+  # @return [Boolean]
+  def ignore_collaborator?(collaborator)
+    ignore_collaborators.include?(collaborator[:login])
+  end
+
+  # user1,user2
+  # ↓
+  # ["user1", "user2"]
+  #
+  # @return [Array<String>]
+  def ignore_collaborators
+    @ignore_collaborators ||= (raw_ignore_collaborators || '').split(',')
   end
 
   def client
